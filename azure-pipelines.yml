@@ -10,19 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: Run Snyk to check for vulnerabilities
-  displayName: 'Run a one-line script'
-  
-# - script: |
-#     echo Add other tasks to build, test, and deploy your project.
-#     echo See https://aka.ms/yaml
-#   displayName: 'Run a multi-line script'
-#   env:
-#         COMMAND: "npm install"
-#         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-#         with:
-#           args: --severity-threshold=high 
-
 
 - task: SnykSecurityScan@1
   inputs:
@@ -31,19 +18,3 @@ steps:
     failOnIssues: true
     monitorWhen: 'always'
   
-name: CI  example workflow for Nodejs using Snyk 
-
-
-# on: push
-# jobs:
-#   security:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@master
-#       - name: Run Snyk to check for vulnerabilities
-#         uses: snyk/actions/node@master
-#         env:
-#           COMMAND: "npm install"
-#           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-#         with:
-#           args: --severity-threshold=high  
